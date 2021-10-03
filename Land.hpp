@@ -2,14 +2,6 @@
 
 #include <cstdint>
 
-//const uint8_t LOC_START = 0;       //锟斤拷锟轿伙拷锟?
-//const uint8_t LOC_HOSPITAL = 14;   //医院位锟斤拷
-//const uint8_t LOC_TOOLHOUSE = 28;  //锟斤拷锟斤拷锟斤拷位锟斤拷
-//const uint8_t LOC_GIFTHOUSE = 35;  //锟斤拷品锟斤拷位锟斤拷
-//const uint8_t LOC_PRISON = 49;     //锟斤拷锟斤拷位锟斤拷
-//const uint8_t LOC_MAGICHOUSE = 63; //魔锟斤拷锟斤拷位锟斤拷
-//const uint8_t LOC_MINE_START = 64; //锟斤拷乜锟绞嘉伙拷锟?
-
 enum LandType
 {
     Land_Empty,
@@ -17,19 +9,21 @@ enum LandType
     Land_ToolHouse,
     Land_GiftHouse,
     Land_MagicHouse,
-    Land_Hospitol,
-    Land_Prison,
+    Land_Park,
+    //Land_Hospitol,
+    //Land_Prison,
     Land_Mine,
 };
 
 class Land
 {
 public:
-    LandType type;    //空地、起点、道具屋、礼品屋、魔法屋、医院、监狱、矿地
-    uint8_t owner;    //隶属玩家 0,1,2,3,4
-    uint8_t level;    //地产 level
-    uint8_t tool;     //道具类型
-    int origin_price; //地段售价
+    LandType type;       //空地、起点、道具屋、礼品屋、魔法屋、公园、矿地
+    uint8_t owner;       //隶属玩家 0,1,2,3,4
+    uint8_t level;       //地产 level
+    uint8_t isblock;     //有无障碍
+    uint8_t mine_credit; //矿地点数----------------------------------------------------------------------
+    int origin_price;    //地段售价
 
     Land(LandType _type = Land_Empty, int _origin_price = 0); //初始化
     int Sell_price();                                         //获取售价

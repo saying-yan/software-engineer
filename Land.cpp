@@ -5,7 +5,7 @@ Land::Land(LandType _type, int _origin_price)
     type = _type;
     owner = 0;
     level = 0;
-    tool = 0;
+    isblock = 0;
     origin_price = _origin_price;
 }
 

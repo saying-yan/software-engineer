@@ -16,21 +16,30 @@ public:
     Player player[MAX_PLAYER_NUM];        //玩家对象组
     Land land[LAND_NUM];                  //地图对象组
 
+    Player *current_player;   //当前玩家
+    uint8_t current_player_i; //当前玩家索引
+
+    void Game_Start(); //开始游戏，解析命令行输入执行对应操作
+
     Game(){};
     Game(uint8_t total_num, uint8_t _order[], int init_fund); //初始化
     void Map_Init();                                          //初始化地图
     void Player_Init(int init_fund);                          //初始化玩家
 
-    bool Set_Cur_Player(uint8_t cur_player);                        //设置当前玩家
-    int Get_Cur_Player(void);                                       //获得当前玩家
-    bool Set_Player_Location(uint8_t player, int loc, int delay);   //设置玩家位置
-    bool Set_Land(uint8_t player, int loc, int level);              //设置 Land所属及房屋等级
-    bool Set_Player_Status(uint8_t player, int _fund, int _credit); //设置玩家钱和点数
-    void Set_Player_Tool(uint8_t player, int tool_type, int num);   //设置玩家道具数
-    bool Set_Barrier(int tool_type, int location);                  //放道具
-
+    void Lay_Block(int loc);        //使用障碍
+    void Lay_Robot();        //使用机器人
     void Map_Display();             //打印地图
     void display_loc(uint8_t loc);  // 打印地图具体位置的字符
     void Player_Bankrupt(Player p); //清算人物资产是否破产
     void Roll(Player p);            //掷色子，移位
+    void Help();                    //帮助信息
+
+    //测试功能
+    bool Set_Cur_Player(uint8_t cur_player);                        //设置当前玩家
+    void Turn_to_next_Player();                                     //切换到下一个玩家
+    bool Set_Player_Location(uint8_t player, int loc, int delay);   //设置玩家位置
+    bool Set_Land(uint8_t player, int loc, int level);              //设置 Land所属及房屋等级
+    bool Set_Player_Status(uint8_t player, int _fund, int _credit); //设置玩家钱和点数
+    void Set_Player_Tool(uint8_t player, int tool_type, int num);   //设置玩家道具数
+    bool Set_Barrier(int tool_type, int location);                  //放置道具
 };

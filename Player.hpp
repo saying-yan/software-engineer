@@ -2,11 +2,14 @@
 
 #include <cstdio>
 #include <cstdint>
+#include <string>
 #include "Land.hpp"
+
+using namespace std;
 
 struct Tool
 {
-    uint8_t bomb;
+    // uint8_t bomb;
     uint8_t barrier;
     uint8_t robot;
 };
@@ -22,40 +25,42 @@ enum class Color
 class Player
 {
 public:
-    char name;         //äººç‰©å
-    int fund;          //é‡‘å¸æ•°
-    int credit;        //ç‚¹æ•°
-    uint8_t location;  //ä½ç½®
-    struct Tool *tool; //é“å…·
-    uint8_t god_days;  //è´¢ç¥å‰©ä½™å¤©æ•°
-    uint8_t hos_days;  //ä½é™¢å‰©ä½™å¤©æ•°
-    uint8_t pri_days;  //åç‰¢å‰©ä½™å¤©æ•°
-    bool bankrupt;     //æ˜¯å¦ç ´äº§
-    bool is_sell;      //æœ¬è½®æ˜¯å¦å‡ºå”®è¿‡äº†æˆ¿äº§
-    //int m_inMagic;     //åœæ­¢å‰©ä½™è½®æ•°
+    char name;         //ÈËÎïÃû
+    int fund;          //½ğ±ÒÊı
+    int credit;        //µãÊı
+    uint8_t location;  //Î»ÖÃ
+    struct Tool *tool; //µÀ¾ß
+    uint8_t god_days;  //²ÆÉñÊ£ÓàÌìÊı
+    // uint8_t hos_days;  //×¡ÔºÊ£ÓàÌìÊı
+    // uint8_t pri_days; //×øÀÎÊ£ÓàÌìÊı
+    uint8_t magic_days; //Ä§·¨Ê£ÓàÌìÊı
+    bool bankrupt;      //ÊÇ·ñÆÆ²ú
+    bool is_sell;       //±¾ÂÖÊÇ·ñ³öÊÛ¹ıÁË·¿²ú
 
-    Color color; // é¢œè‰²
+    Color color; // ÑÕÉ«
 
-    Player(uint8_t _name = 0, int _fund = 0); //åˆå§‹åŒ–
+    Player(uint8_t _name = 0, int _fund = 0); //³õÊ¼»¯
 
-    bool isBankrupt();  //æŸ¥è¯¢æ˜¯å¦ç ´äº§
-    void CheckStatus(); //æŸ¥è¯¢çŠ¶æ€
+    bool isBankrupt();     //²éÑ¯ÊÇ·ñÆÆ²ú
+    void CheckStatus();    //²éÑ¯×´Ì¬
+    void Check_Bankrupt(); //ÇåËã×Ê²ú
 
-    void LayTool();        //æ”¾é“å…·
-    void UpdateBuliding(); //å‡çº§å»ºç­‘
-    void SellBuliding();   //å–å»ºç­‘
-    void Roll();           //æ·è‰²å­
+    void UpdateBuliding(Land &_land); //Éı¼¶½¨Öş
+    void SellBuliding();              //Âô½¨Öş
+    void Roll();                      //ÖÀÉ«×Ó
 
-    void MagicWork();  //é­”æ³•ç”Ÿæ•ˆ
-    void ToolWork();   //è¿›å…¥é“å…·ä½ç½®ï¼Œé“å…·ç”Ÿæ•ˆ
-    void BuyLand();    //è¿›å…¥ç©ºåœ°ï¼Œä¹°ç©ºåœ°
-    void PayRent();    //è¿›å…¥ä»–äººæˆ¿äº§ï¼Œä»˜ç§Ÿé‡‘
-    void ToolHouse();  //è¿›å…¥å·¥å…·å±‹
-    void MagicHouse(); //è¿›å…¥é­”æ³•å±‹
-    void GiftHouse();  //è¿›å…¥ç¤¼ç‰©å±‹
-    void Hospital();   //è¿›å…¥åŒ»é™¢
-    void Prison();     //è¿›å…¥ç›‘ç‹±
-    void Mine();       //åˆ°è¾¾çŸ¿åœ°
+    uint8_t CheckLand();       //¼ì²â½øÈëµÄµØĞÎ
+    void MagicWork();          //Ä§·¨ÉúĞ§
+    void ToolWork();           //½øÈëµÀ¾ßÎ»ÖÃ£¬µÀ¾ßÉúĞ§
+    void BuyLand(Land &_land); //½øÈë¿ÕµØ£¬Âò¿ÕµØ
+    void PayRent();            //½øÈëËûÈË·¿²ú£¬¸¶×â½ğ
+    void ToolHouse();          //½øÈë¹¤¾ßÎİ
+    void MagicHouse();         //½øÈëÄ§·¨Îİ
+    void GiftHouse();          //½øÈëÀñÎïÎİ
+    void Hospital();           //½øÈëÒ½Ôº
+    void Prison();             //½øÈë¼àÓü
+    void Mine();               //µ½´ï¿óµØ
 
-    void colorfulPrintf(char c); // å¸¦é¢œè‰²è¾“å‡º
+    void colorfulPrintf(char c);   // ´øÑÕÉ«Êä³ö
+    void colorfulPrintf(string s); //´øÑÕÉ«Êä³ö
 };
