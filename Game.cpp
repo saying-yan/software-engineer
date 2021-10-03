@@ -6,7 +6,9 @@ Game::Game(uint8_t _player_total_num, uint8_t _order[], int init_fund)
     player_current_num = player_total_num;
 
     for (int i = 0; i < _player_total_num; i++) //玩家顺序
+    {
         player_index[i] = _order[i];
+    }
 
     Map_Init();             //生成地图
     Player_Init(init_fund); //生成玩家
@@ -37,6 +39,6 @@ void Game::Player_Init(int init_fund)
 {
     for (int i = 0; i < this->player_current_num; i++)
     {
-        player[i] = Player(player_index[i], init_fund);
+        player[player_index[i]] = Player(player_index[i], init_fund);
     }
 }

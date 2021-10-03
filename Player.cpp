@@ -6,6 +6,7 @@ Player::Player(uint8_t _name, int _fund)
     fund = _fund;
     credit = 0;
     location = Land_Origin;
+    tool = new Tool;
     tool->bomb = 0;
     tool->barrier = 0;
     tool->robot = 0;
@@ -17,17 +18,21 @@ Player::Player(uint8_t _name, int _fund)
 
 void Player_Init();
 
-bool Player::isBankrupt() {
+bool Player::isBankrupt()
+{
     return this->bankrupt;
 }
 
-void Player::colorfulPrintf(char c) {
-    if (this->color == Red) {
+void Player::colorfulPrintf(char c)
+{
+    if (this->color == Red)
+    {
         printf("\033[31;0m");
         putchar(c);
         printf("\033[0m");
     }
-    else if (this->color == Green) {
+    else if (this->color == Green)
+    {
         printf("\033[32;0m");
         putchar(c);
         printf("\033[0m");
