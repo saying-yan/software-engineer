@@ -4,75 +4,34 @@
 #include "Land.hpp"
 #include "Player.hpp"
 
-const int MAX_PLAYER_NUM=4; //æœ€å¤§ç©å®¶æ•°
-const int LAND_NUM=70;      //åœ°å›¾æ ¼æ•°
+const int MAX_PLAYER_NUM = 4; //×î´óÍæ¼ÒÊı
+const int LAND_NUM = 70;      //µØÍ¼¸ñÊı
 
 class Game
 {
 public:
-    uint8_t player_total_num;             //ç©å®¶æ€»é‡
-    uint8_t player_current_num;           //å‰©ä½™ç©å®¶æ•°é‡
-    uint8_t player_index[MAX_PLAYER_NUM]; //åœ¨åœºç©å®¶é¡ºåºç´¢å¼•
-    Player player[MAX_PLAYER_NUM];        //ç©å®¶å¯¹è±¡ç»„
-    Land land[LAND_NUM];                  //åœ°å›¾å¯¹è±¡ç»„
+    uint8_t player_total_num;             //Íæ¼Ò×ÜÁ¿
+    uint8_t player_current_num;           //Ê£ÓàÍæ¼ÒÊıÁ¿
+    uint8_t player_index[MAX_PLAYER_NUM]; //ÔÚ³¡Íæ¼ÒË³ĞòË÷Òı
+    Player player[MAX_PLAYER_NUM];        //Íæ¼Ò¶ÔÏó×é
+    Land land[LAND_NUM];                  //µØÍ¼¶ÔÏó×é
 
     Game();
-    Game(uint8_t total_num, uint8_t _order[], int init_fund); //åˆå§‹åŒ–
-    void Map_Init();                                          //åˆå§‹åŒ–åœ°å›¾
-    void Player_Init(int init_fund);                          //åˆå§‹åŒ–ç©å®¶
+    Game(uint8_t total_num, uint8_t _order[], int init_fund); //³õÊ¼»¯
+    void Map_Init();                                          //³õÊ¼»¯µØÍ¼
+    void Player_Init(int init_fund);                          //³õÊ¼»¯Íæ¼Ò
 
-    bool Set_Cur_Player(uint8_t cur_player);                        //è®¾ç½®å½“å‰ç©å®¶
-    int Get_Cur_Player(void);                                       //è·å¾—å½“å‰ç©å®¶
-    bool Set_Player_Location(uint8_t player, int loc, int delay);   //è®¾ç½®ç©å®¶ä½ç½®
-    bool Set_Land(uint8_t player, int loc, int level);              //è®¾ç½® Landæ‰€å±åŠæˆ¿å±‹ç­‰çº§
-    bool Set_Player_Status(uint8_t player, int _fund, int _credit); //è®¾ç½®ç©å®¶é’±å’Œç‚¹æ•°
-    void Set_Player_Tool(uint8_t player, int tool_type, int num);   //è®¾ç½®ç©å®¶é“å…·æ•°
-    bool Set_Barrier(int tool_type, int location);                  //æ”¾é“å…·
+    bool Set_Cur_Player(uint8_t cur_player);                        //ÉèÖÃµ±Ç°Íæ¼Ò
+    int Get_Cur_Player(void);                                       //»ñµÃµ±Ç°Íæ¼Ò
+    bool Set_Player_Location(uint8_t player, int loc, int delay);   //ÉèÖÃÍæ¼ÒÎ»ÖÃ
+    bool Set_Land(uint8_t player, int loc, int level);              //ÉèÖÃ LandËùÊô¼°·¿ÎİµÈ¼¶
+    bool Set_Player_Status(uint8_t player, int _fund, int _credit); //ÉèÖÃÍæ¼ÒÇ®ºÍµãÊı
+    void Set_Player_Tool(uint8_t player, int tool_type, int num);   //ÉèÖÃÍæ¼ÒµÀ¾ßÊı
+    bool Set_Barrier(int tool_type, int location);                  //·ÅµÀ¾ß
 
-    void Map_Display(); //æ‰“å°åœ°å›¾
+    void Map_Display(); //´òÓ¡µØÍ¼
 private:
-    void display_loc(uint8_t loc); // æ‰“å°åœ°å›¾å…·ä½“ä½ç½®çš„å­—ç¬¦
-    void Player_Bankrupt(Player p); //æ¸…ç®—äººç‰©èµ„äº§æ˜¯å¦ç ´äº§
-    void Roll(Player p);            //æ·è‰²å­ï¼Œç§»ä½
+    void display_loc(uint8_t loc); // ´òÓ¡µØÍ¼¾ßÌåÎ»ÖÃµÄ×Ö·û
+    void Player_Bankrupt(Player p); //ÇåËãÈËÎï×Ê²úÊÇ·ñÆÆ²ú
+    void Roll(Player p);            //ÖÀÉ«×Ó£¬ÒÆÎ»
 };
-
-void Game::Map_Init()
-{
-    land[0] = Land(Land_Origin, 0);
-    for (int i = 1; i < 29; i++)
-    {
-        land[i] = Land(Land_Empty, 200);
-    }
-    for (int i = 29; i < 35; i++)
-    {
-        land[i] = Land(Land_Empty, 500);
-    }
-    for (int i = 35; i < 54; i++)
-    {
-        land[i] = Land(Land_Empty, 300);
-    }
-    for (int i = 54; i < 70; i++)
-    {
-        land[i] = Land(Land_Mine, 0);
-    }
-}
-
-void Game::Player_Init(int init_fund)
-{
-    for (int i; i < player_current_num; i++)
-    {
-        player[i] = Player(player_index[i], init_fund);
-    }
-}
-
-Game::Game(uint8_t _player_total_num, uint8_t _order[], int init_fund)
-{
-    player_total_num = _player_total_num;
-    player_current_num = player_total_num;
-
-    for (int i = 0; i < _player_total_num; i++) //ç©å®¶é¡ºåº
-        player_index[i] = _order[i];
-
-    Map_Init();             //ç”Ÿæˆåœ°å›¾
-    Player_Init(init_fund); //ç”Ÿæˆç©å®¶
-}

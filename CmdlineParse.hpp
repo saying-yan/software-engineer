@@ -1,4 +1,5 @@
-void CmdlineParse(); //åˆ¤æ–­è¾“å…¥é¦–å‚ï¼Œè°ƒç”¨ä¸åŒæŒ‡ä»¤è§£æå‡½æ•°
+#pragma once
+void CmdlineParse(); //ÅĞ¶ÏÊäÈëÊ×²Î£¬µ÷ÓÃ²»Í¬Ö¸Áî½âÎöº¯Êı
 
 void Cmdline_Roll();
 

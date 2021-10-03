@@ -2,13 +2,13 @@
 
 #include <cstdint>
 
-const uint8_t LOC_START=0;      //èµ·ç‚¹ä½ç½®
-const uint8_t LOC_HOSPITAL=14;  //åŒ»é™¢ä½ç½®
-const uint8_t LOC_TOOLHOUSE=28; //é“å…·å±‹ä½ç½®
-const uint8_t LOC_GIFTHOUSE=35; //ç¤¼å“å±‹ä½ç½®
-const uint8_t LOC_PRISON=49;    //ç›‘ç‹±ä½ç½®
-const uint8_t LOC_MAGICHOUSE=63;//é­”æ³•å±‹ä½ç½®
-const uint8_t LOC_MINE_START=64;//çŸ¿åœ°å¼€å§‹ä½ç½®
+const uint8_t LOC_START = 0;      //ÆğµãÎ»ÖÃ
+const uint8_t LOC_HOSPITAL = 14;  //Ò½ÔºÎ»ÖÃ
+const uint8_t LOC_TOOLHOUSE = 28; //µÀ¾ßÎİÎ»ÖÃ
+const uint8_t LOC_GIFTHOUSE = 35; //ÀñÆ·ÎİÎ»ÖÃ
+const uint8_t LOC_PRISON = 49;    //¼àÓüÎ»ÖÃ
+const uint8_t LOC_MAGICHOUSE = 63;//Ä§·¨ÎİÎ»ÖÃ
+const uint8_t LOC_MINE_START = 64;//¿óµØ¿ªÊ¼Î»ÖÃ
 
 enum LandType
 {
@@ -25,34 +25,12 @@ enum LandType
 class Land
 {
 public:
-    LandType type;    //ç©ºåœ°ã€èµ·ç‚¹ã€é“å…·å±‹ã€ç¤¼å“å±‹ã€é­”æ³•å±‹ã€åŒ»é™¢ã€ç›‘ç‹±ã€çŸ¿åœ°
-    uint8_t owner;    //éš¶å±ç©å®¶ 0,1,2,3,4
-    uint8_t level;    //åœ°äº§ level
-    uint8_t tool;     //é“å…·ç±»å‹
-    int origin_price; //åœ°æ®µå”®ä»·
+    LandType type;    //¿ÕµØ¡¢Æğµã¡¢µÀ¾ßÎİ¡¢ÀñÆ·Îİ¡¢Ä§·¨Îİ¡¢Ò½Ôº¡¢¼àÓü¡¢¿óµØ
+    uint8_t owner;    //Á¥ÊôÍæ¼Ò 0,1,2,3,4
+    uint8_t level;    //µØ²ú level
+    uint8_t tool;     //µÀ¾ßÀàĞÍ
+    int origin_price; //µØ¶ÎÊÛ¼Û
 
-    Land();
-    Land(LandType _type, int _origin_price); //åˆå§‹åŒ–
-    int Sell_price();                        //è·å–å”®ä»·
+    Land(LandType _type=Land_Empty, int _origin_price=0); //³õÊ¼»¯
+    int Sell_price();                        //»ñÈ¡ÊÛ¼Û
 };
-
-Land::Land()
-{
-}
-
-Land::Land(LandType _type, int _origin_price)
-{
-    type = _type;
-    owner = 0;
-    level = 0;
-    tool = 0;
-    origin_price = _origin_price;
-}
-
-int Land::Sell_price()
-{
-    if (type == Land_Empty && owner != 0)
-        return origin_price * (level + 1);
-    else
-        return 0;
-}

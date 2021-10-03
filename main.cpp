@@ -4,12 +4,12 @@
 
 int main()
 {
-    uint8_t _order[2] = {2, 3};
+    uint8_t _order[2] = { 2, 3 };
     Game game = Game(2, _order, 10000);
-    printf("player_total_numï¼š%d\n", game.player_total_num);
-    printf("player_current_numï¼š%d\n", game.player_current_num);
-    printf("player_index[0]ï¼š%d\n", game.player_index[0]);
-    printf("player_index[1]ï¼š%d\n", game.player_index[1]);
+    printf("player_total_num£º%d\n", game.player_total_num);
+    printf("player_current_num£º%d\n", game.player_current_num);
+    printf("player_index[0]£º%d\n", game.player_index[0]);
+    printf("player_index[1]£º%d\n", game.player_index[1]);
 
     return 0;
 }

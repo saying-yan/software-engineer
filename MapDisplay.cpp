@@ -32,7 +32,8 @@ void Game::display_loc(uint8_t loc) {
     else if (this->land[loc].type == Land_Empty) {
         if (this->land[loc].owner == 0) {
             putchar(this->land[loc].level);
-        } else {
+        }
+        else {
             uint8_t owner = this->land[loc].owner;
             this->player[owner].colorfulPrintf(this->land[loc].level);
         }
@@ -49,9 +50,9 @@ void Game::Map_Display() {
     }
     putchar('\n');
     for (int i = 0; i < 6; ++i) {
-        this->display_loc(69-i);
+        this->display_loc(69 - i);
         for (int j = 0; j < 27; ++j) putchar(' ');
-        this->display_loc(29+i);
+        this->display_loc(29 + i);
         putchar('\n');
     }
     for (int i = 63; i >= 35; --i) {
