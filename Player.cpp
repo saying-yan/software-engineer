@@ -1,6 +1,8 @@
 #include "Player.hpp"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 Player::Player(uint8_t index, int _fund)
 {
@@ -8,7 +10,7 @@ Player::Player(uint8_t index, int _fund)
     name = s[index];
     fund = _fund;
     credit = 0;
-    location = Land_Origin;
+    location = 0;
     tool = new Tool;
     tool->bomb = 0;
     tool->barrier = 0;
@@ -112,5 +114,16 @@ void Player::UpdateBuliding(Land &_land)
             printf("请问您是否升级要这个房产？请输入yes/no\n");
             scanf("%s", str);
         }
+    }
+}
+
+void Player::Roll()
+{
+    srand((unsigned)time(NULL));
+    int step = rand() % 6 + 1; //步数为1~6的随机数
+    for (int i = 0; i < step; ++i)
+    {
+        //会用到路途中道具的判断，暂时留空
+        this->location = (this->location + 1) % 70;
     }
 }
