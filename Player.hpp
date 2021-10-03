@@ -11,12 +11,12 @@ struct Tool
     uint8_t robot;
 };
 
-enum Color
+enum class Color
 {
     Red,
     Green,
     Yellow,
-    Blue
+    Blue,
 };
 
 class Player
@@ -34,7 +34,7 @@ public:
     bool is_sell;      //本轮是否出售过了房产
     //int m_inMagic;     //停止剩余轮数
 
-    uint8_t color; // 颜色
+    Color color; // 颜色
 
     Player(uint8_t _name = 0, int _fund = 0); //初始化
 

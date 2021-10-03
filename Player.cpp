@@ -15,8 +15,23 @@ Player::Player(uint8_t index, int _fund)
     bankrupt = 0;
     hos_days = 0;
     pri_days = 0;
+    color = Color::Red;
 
-    color = index;
+    switch (index)
+    {
+    case 0:
+        color = Color::Red;
+        break;
+    case 1:
+        color = Color::Green;
+        break;
+    case 2:
+        color = Color::Yellow;
+        break;
+    case 3:
+        color = Color::Blue;
+        break;
+    }
 }
 
 void Player_Init();
@@ -28,15 +43,27 @@ bool Player::isBankrupt()
 
 void Player::colorfulPrintf(char c)
 {
-    if (this->color == Red)
+    if (this->color == Color::Red)
     {
-        printf("\033[31;0m");
+        printf("\033[31m");
         putchar(c);
         printf("\033[0m");
     }
-    else if (this->color == Green)
+    else if (this->color == Color::Green)
     {
-        printf("\033[32;0m");
+        printf("\033[32m");
+        putchar(c);
+        printf("\033[0m");
+    }
+    else if (this->color == Color::Yellow)
+    {
+        printf("\033[33m");
+        putchar(c);
+        printf("\033[0m");
+    }
+    else if (this->color == Color::Blue)
+    {
+        printf("\033[34m");
         putchar(c);
         printf("\033[0m");
     }

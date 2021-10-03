@@ -5,13 +5,14 @@ Game::Game(uint8_t _player_total_num, uint8_t _order[], int init_fund)
     player_total_num = _player_total_num;
     player_current_num = player_total_num;
 
-    for (int i = 0; i < _player_total_num; i++) //Íæ¼ÒË³Ðò
+    for (int i = 0; i < _player_total_num; i++) //ï¿½ï¿½ï¿½Ë³ï¿½ï¿½
     {
         player_index[i] = _order[i];
     }
 
-    Map_Init();             //Éú³ÉµØÍ¼
-    Player_Init(init_fund); //Éú³ÉÍæ¼Ò
+    Map_Init();             //ï¿½ï¿½ï¿½Éµï¿½Í¼
+    Player_Init(init_fund); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    Map_Display();
 }
 
 void Game::Map_Init()
