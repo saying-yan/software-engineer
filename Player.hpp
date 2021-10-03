@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdio>
 #include <cstdint>
 
 struct Tool
@@ -9,10 +10,15 @@ struct Tool
     uint8_t robot;
 };
 
+enum Color {
+    Red,
+    Green,
+};
+
 class Player
 {
 public:
-    uint8_t name;      //人物名
+    char name;      //人物名
     int fund;          //金币数
     int credit;        //点数
     uint8_t location;  //位置
@@ -23,6 +29,8 @@ public:
     bool bankrupt;     //是否破产
     bool is_sell;      //本轮是否出售过了房产
     //int m_inMagic;     //停止剩余轮数
+
+    uint8_t color;      // 颜色
 
     Player();
     Player(uint8_t _name, int _fund); //初始化
@@ -45,6 +53,8 @@ public:
     void Hospital();   //进入医院
     void Prison();     //进入监狱
     void Mine();       //到达矿地
+
+    void colorfulPrintf(char c); // 带颜色输出
 };
 
 Player::Player(uint8_t _name, int _fund)
@@ -63,3 +73,19 @@ Player::Player(uint8_t _name, int _fund)
 }
 
 void Player_Init();
+
+bool Player::isBankrupt() {
+    return this->bankrupt;
+}
+
+void Player::colorfulPrintf(char c) {
+    if (this->color == Red) {
+        printf("\033[31;0m");
+        putchar(c);
+        printf("\033[0m");
+    } else if (this->color == Green) {
+        printf("\033[32;0m");
+        putchar(c);
+        printf("\033[0m");
+    }
+}

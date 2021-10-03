@@ -4,8 +4,8 @@
 #include "Land.hpp"
 #include "Player.hpp"
 
-#define MAX_PLAYER_NUM 4 //最大玩家数
-#define LAND_NUM 64      //地图格数
+const int MAX_PLAYER_NUM=4; //最大玩家数
+const int LAND_NUM=70;      //地图格数
 
 class Game
 {
@@ -28,6 +28,8 @@ public:
     bool Set_Barrier(int tool_type, int location);                  //放道具
 
     void Map_Display(); //打印地图
+private:
+    void display_loc(uint8_t loc); // 打印地图具体位置的字符
 };
 
 Game::Game(uint8_t total_num, uint8_t _order[])
