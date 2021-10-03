@@ -8,7 +8,7 @@ Player::Player(uint8_t index, int _fund)
     name = s[index];
     fund = _fund;
     credit = 0;
-    location = Land_Origin;
+    location = 0;
     tool = new Tool;
     tool->bomb = 0;
     tool->barrier = 0;
@@ -20,8 +20,6 @@ Player::Player(uint8_t index, int _fund)
 
     color = index;
 }
-
-void Player_Init();
 
 bool Player::isBankrupt()
 {
