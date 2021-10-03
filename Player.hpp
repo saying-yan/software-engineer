@@ -27,7 +27,7 @@ public:
     Player();
     Player(uint8_t _name, int _fund); //初始化
 
-    bool isBankrupt();  //是否破产
+    bool isBankrupt();  //查询是否破产
     void CheckStatus(); //查询状态
 
     void LayTool();        //放道具
@@ -47,6 +47,10 @@ public:
     void Mine();       //到达矿地
 };
 
+Player::Player()
+{
+}
+
 Player::Player(uint8_t _name, int _fund)
 {
     name = _name;
@@ -61,5 +65,3 @@ Player::Player(uint8_t _name, int _fund)
     hos_days = 0;
     pri_days = 0;
 }
-
-void Player_Init();

@@ -24,11 +24,15 @@ public:
     int origin_price; //地段售价
 
     Land();
-    Land(LandType _type, uint8_t _origin_price); //初始化
-    int Sell_price();                            //获取售价
+    Land(LandType _type, int _origin_price); //初始化
+    int Sell_price();                        //获取售价
 };
 
-Land::Land(LandType _type, uint8_t _origin_price)
+Land::Land()
+{
+}
+
+Land::Land(LandType _type, int _origin_price)
 {
     type = _type;
     owner = 0;
@@ -44,5 +48,3 @@ int Land::Sell_price()
     else
         return 0;
 }
-
-void Land_Init();
