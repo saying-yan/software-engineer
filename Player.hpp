@@ -15,6 +15,8 @@ enum Color
 {
     Red,
     Green,
+    Yellow,
+    Blue
 };
 
 class Player
