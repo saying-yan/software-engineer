@@ -61,7 +61,8 @@ Player::Player(uint8_t _name, int _fund)
     tool->barrier = 0;
     tool->robot = 0;
     god_days = 0;
-    bankrupt = 0;
     hos_days = 0;
     pri_days = 0;
+    bankrupt = 0;
+    is_sell = 0;
 }

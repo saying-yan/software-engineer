@@ -68,7 +68,7 @@ Game::Game(uint8_t _player_total_num, uint8_t _order[], int init_fund)
     player_total_num = _player_total_num;
     player_current_num = player_total_num;
 
-    for (int i = 0; i < _player_total_num; i++) //玩家顺序
+    for (int i = 0; i < _player_total_num; i++) //在场玩家顺序索引
         player_index[i] = _order[i];
 
     Map_Init();             //生成地图
