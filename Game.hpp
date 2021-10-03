@@ -29,8 +29,7 @@ public:
     void Set_Player_Tool(uint8_t player, int tool_type, int num);   //设置玩家道具数
     bool Set_Barrier(int tool_type, int location);                  //放道具
 
-    void Map_Display();             //打印地图
-    void display_loc(uint8_t loc);  // 打印地图具体位置的字符
-    void Player_Bankrupt(Player p); //清算人物资产是否破产
-    void Roll(Player p);            //掷色子，移位
+    void Map_Display();            //打印地图
+    void display_loc(uint8_t loc); // 打印地图具体位置的字符
+    void Roll(Player p);           //掷色子，移位
 };
