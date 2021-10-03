@@ -16,7 +16,7 @@ public:
     Player player[MAX_PLAYER_NUM];        //玩家对象组
     Land land[LAND_NUM];                  //地图对象组
 
-    Game();
+    Game(){};
     Game(uint8_t total_num, uint8_t _order[], int init_fund); //初始化
     void Map_Init();                                          //初始化地图
     void Player_Init(int init_fund);                          //初始化玩家
@@ -29,9 +29,8 @@ public:
     void Set_Player_Tool(uint8_t player, int tool_type, int num);   //设置玩家道具数
     bool Set_Barrier(int tool_type, int location);                  //放道具
 
-    void Map_Display(); //打印地图
-private:
-    void display_loc(uint8_t loc); // 打印地图具体位置的字符
+    void Map_Display();             //打印地图
+    void display_loc(uint8_t loc);  // 打印地图具体位置的字符
     void Player_Bankrupt(Player p); //清算人物资产是否破产
     void Roll(Player p);            //掷色子，移位
 };

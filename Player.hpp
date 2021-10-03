@@ -11,7 +11,8 @@ struct Tool
     uint8_t robot;
 };
 
-enum Color {
+enum Color
+{
     Red,
     Green,
 };
@@ -19,11 +20,11 @@ enum Color {
 class Player
 {
 public:
-    char name;      //人物名
+    char name;         //人物名
     int fund;          //金币数
     int credit;        //点数
     uint8_t location;  //位置
-    struct Tool* tool; //道具
+    struct Tool *tool; //道具
     uint8_t god_days;  //财神剩余天数
     uint8_t hos_days;  //住院剩余天数
     uint8_t pri_days;  //坐牢剩余天数
@@ -31,9 +32,9 @@ public:
     bool is_sell;      //本轮是否出售过了房产
     //int m_inMagic;     //停止剩余轮数
 
-    uint8_t color;      // 颜色
+    uint8_t color; // 颜色
 
-    Player(uint8_t _name=0, int _fund=0); //初始化
+    Player(uint8_t _name = 0, int _fund = 0); //初始化
 
     bool isBankrupt();  //查询是否破产
     void CheckStatus(); //查询状态
