@@ -35,7 +35,7 @@ public:
     Player();
     Player(uint8_t _name, int _fund); //初始化
 
-    bool isBankrupt();  //是否破产
+    bool isBankrupt();  //查询是否破产
     void CheckStatus(); //查询状态
 
     void LayTool();        //放道具
@@ -56,6 +56,10 @@ public:
 
     void colorfulPrintf(char c); // 带颜色输出
 };
+
+Player::Player()
+{
+}
 
 Player::Player(uint8_t _name, int _fund)
 {
