@@ -1,4 +1,6 @@
 #include "Player.hpp"
+#include <stdlib.h>
+#include <time.h>
 
 Player::Player(uint8_t index, int _fund)
 {
@@ -6,7 +8,7 @@ Player::Player(uint8_t index, int _fund)
     name = s[index];
     fund = _fund;
     credit = 0;
-    location = Land_Origin;
+    location = 0;
     tool = new Tool;
     tool->bomb = 0;
     tool->barrier = 0;
@@ -66,5 +68,14 @@ void Player::colorfulPrintf(char c)
         printf("\033[34m");
         putchar(c);
         printf("\033[0m");
+    }
+}
+
+void Player::Roll() {
+    srand((unsigned)time(NULL));
+    int step = rand() % 6 + 1;  //步数为1~6的随机数
+    for (int i = 0; i < step; ++i) {
+        //会用到路途中道具的判断，暂时留空
+        this->location = (this->location + 1) % 70;
     }
 }
