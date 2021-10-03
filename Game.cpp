@@ -59,6 +59,12 @@ void Game::Map_Init()
     // land[49] = Land(Land_Prison, 0);
     land[49] = Land(Land_Park, 0);
     land[63] = Land(Land_MagicHouse, 0);
+    land[64].credit = 60;
+    land[65].credit = 80;
+    land[66].credit = 40;
+    land[67].credit = 100;
+    land[68].credit = 80;
+    land[69].credit = 20;
 }
 
 void Game::Player_Init(int init_fund)
@@ -130,8 +136,31 @@ void Game::Game_Start()
             if (s_Roll == s)
             {
                 this->current_player->Roll();
-                //this->current_player->CheckLand();//判断进入了哪里，进而决定执行哪个地形效果
-                break;
+                uint8_t loc = this->current_player->location;
+                int num;
+                switch (this->land[loc].type)
+                {
+                case Land_Empty:
+
+                    break;
+                case Land_ToolHouse:
+
+                    break;
+                case Land_GiftHouse:
+
+                    break;
+                case Land_MagicHouse:
+
+                    break;
+                case Land_Mine:
+                    num = this->land[this->current_player->location].credit;
+                    this->current_player->Mine(num);
+                    break;
+                default:
+                    break;
+                }
+
+                break; // break退出此人循环
             }
             else if (s_Quit == s)
             {

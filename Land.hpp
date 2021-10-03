@@ -22,7 +22,7 @@ public:
     uint8_t owner;       //隶属玩家 0,1,2,3,4
     uint8_t level;       //地产 level
     uint8_t isblock;     //有无障碍
-    uint8_t mine_credit; //矿地点数----------------------------------------------------------------------
+    uint8_t credit;      //矿地点数
     int origin_price;    //地段售价
 
     Land(LandType _type = Land_Empty, int _origin_price = 0); //初始化

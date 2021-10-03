@@ -46,20 +46,18 @@ public:
     void Check_Bankrupt(); //清算资产
 
     void UpdateBuliding(Land &_land); //升级建筑
-    void SellBuliding();              //卖建筑
+    void SellBuliding(Land& _land);   //卖建筑
     void Roll();                      //掷色子
 
     uint8_t CheckLand();       //检测进入的地形
     void MagicWork();          //魔法生效
     void ToolWork();           //进入道具位置，道具生效
     void BuyLand(Land &_land); //进入空地，买空地
-    void PayRent();            //进入他人房产，付租金
+    void PayRent(Land& _land, Player& _owner);     //进入他人房产，付租金
     void ToolHouse();          //进入工具屋
     void MagicHouse();         //进入魔法屋
     void GiftHouse();          //进入礼物屋
-    void Hospital();           //进入医院
-    void Prison();             //进入监狱
-    void Mine();               //到达矿地
+    void Mine(int c);          //到达矿地
 
     void colorfulPrintf(char c);   // 带颜色输出
     void colorfulPrintf(string s); //带颜色输出

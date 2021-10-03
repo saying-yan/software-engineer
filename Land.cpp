@@ -7,6 +7,7 @@ Land::Land(LandType _type, int _origin_price)
     level = 0;
     isblock = 0;
     origin_price = _origin_price;
+    credit = 0;
 }
 
 int Land::Sell_price()
