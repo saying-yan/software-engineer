@@ -25,11 +25,11 @@ void Game::Map_Init()
     {
         land[i] = Land(Land_Empty, 500);
     }
-    for (int i = 35; i < 54; i++)
+    for (int i = 35; i < 64; i++)
     {
         land[i] = Land(Land_Empty, 300);
     }
-    for (int i = 54; i < 70; i++)
+    for (int i = 64; i < 70; i++)
     {
         land[i] = Land(Land_Mine, 0);
     }

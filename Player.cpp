@@ -1,8 +1,9 @@
 #include "Player.hpp"
 
-Player::Player(uint8_t _name, int _fund)
+Player::Player(uint8_t index, int _fund)
 {
-    name = _name;
+    char s[4] = {'Q', 'A', 'S', 'J'};
+    name = s[index];
     fund = _fund;
     credit = 0;
     location = Land_Origin;
@@ -14,6 +15,8 @@ Player::Player(uint8_t _name, int _fund)
     bankrupt = 0;
     hos_days = 0;
     pri_days = 0;
+
+    color = index;
 }
 
 void Player_Init();
