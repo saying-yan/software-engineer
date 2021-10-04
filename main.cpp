@@ -1,22 +1,54 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <iostream>
+#include <math.h>
 #include "Game.hpp"
-#include "CmdlineParse.hpp"
 
 int main()
 {
-    uint8_t _order[2] = {2, 0};
-    Game g = Game(2, _order, 10000);
+    srand((unsigned)time(NULL));
 
-    printf("player_total_num:%d\n", g.player_total_num);
-    printf("player_current_num:%d\n", g.player_current_num);
-    printf("player_index[0]:%d\n", g.player_index[0]);
-    printf("player_index[1]:%d\n", g.player_index[1]);
-    for (int i = 0; i < g.player_current_num; i++)
+    //人数选择
+    int user, user_c;
+    int user_num = 0;
+    printf("请选择2~4个角色：1.钱夫人 2.阿土伯 3.孙小美 4.金贝贝，可自由排序\n");
+    cin >> user;
+    user_c = user;
+    while (user_c)
     {
-        printf("player[%d].name:%c\n", g.player_index[i], g.player[g.player_index[i]].name);
-        printf("player[%d].fund:%d\n", g.player_index[i], g.player[g.player_index[i]].fund);
-        printf("player[%d].credit:%d\n", g.player_index[i], g.player[g.player_index[i]].credit);
-        printf("player[%d].location:%d\n", g.player_index[i], g.player[g.player_index[i]].location);
+        user_c /= 10;
+        user_num++;
     }
+    uint8_t *charactor = new uint8_t[user_num];
+    if (user_num < 2 || user_num > 4)
+        exit(0);
+    else
+    {
+        for (int i = 0; i < user_num; i++)
+        {
+            charactor[i] = (user / (int)(pow(10, (user_num - i - 1)))) % 10 - 1;
+        }
+    }
+
+    //开局资金选择
+    int i_fund;
+    printf("请输入启动资金，范围：1000~50000 （输入其他默认10000）\n");
+    cin >> i_fund;
+    // printf("%d\n", i_fund);
+    if (i_fund > 50000 || i_fund < 1000)
+    {
+        i_fund = 10000;
+    }
+    if (cin.rdstate())
+    {
+        cin.clear();
+        cin.ignore(65535, '\n');
+    }
+
+    //开启游戏
+    Game *g = new Game(user_num, charactor, i_fund);
+    g->Game_Start();
+
     return 0;
 }
